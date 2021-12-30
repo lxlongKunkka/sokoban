@@ -136,6 +136,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function win () {
+    if (testing == 1) {
+        return
+    }
+    testing = 1
     wingame = true
     for (let 值 of sprites.allOfKind(SpriteKind.Box)) {
         bx = Math.idiv(值.x, 16)
@@ -158,6 +162,7 @@ function win () {
             game.over(true)
         }
     }
+    testing = 0
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     try_move(-1, 0)
@@ -166,6 +171,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 let by = 0
 let bx = 0
 let wingame = false
+let testing = 0
 let hero: Sprite = null
 let box: Sprite = null
 let flag = 0
